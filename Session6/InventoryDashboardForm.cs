@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -33,8 +34,54 @@ namespace Session6
             // Costly Assets
             initCostlyAssets(inventory);
 
+            //  compare departmental spending on a pie chart
             //pie chart
             initPieChart();
+
+            //  how much each month is spent in each of the departments
+            initChart();
+        }
+        private void initChart()
+        {
+
+            chartView.Series.Clear();
+            chartView.ChartAreas.Clear();
+
+            chartView.ChartAreas.Add(new ChartArea("Area1"));
+            //chartView.ChartAreas[0].AxisX.Interval = 1;
+            chartView.ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Months;
+            //chartView.ChartAreas[0].AxisX.IntervalOffsetType = DateTimeIntervalType.Hours;
+            chartView.ChartAreas[0].AxisX.LabelStyle.Format = "yyyy-MM";
+
+            // ChartにSeriesを追加します
+            string legend = "Department";
+            chartView.Series.Add(legend);
+
+            chartView.Series[legend].ChartType = SeriesChartType.Column;
+            chartView.Series[legend].XValueType = ChartValueType.Date;
+            // barの幅
+            chartView.Series[legend]["PixelPointWidth"] = "20";
+            int count = emSpendingView.RowCount;
+            Dictionary<string, Series> seriesList = new Dictionary<string, Series>();
+            for (int i = 0; i < count; i++)
+            {
+                string department = (string)emSpendingView.Rows[i].Cells[0].Value;
+                for (int j = 1; j < emSpendingView.ColumnCount; j++)
+                {
+                    string month = emSpendingView.Columns[j].HeaderText;
+                    int expend = (int)emSpendingView.Rows[i].Cells[j].Value;
+
+                    Series series;
+                    if (seriesList.TryGetValue(department, out series) == false)
+                    {
+                        seriesList.Add(department, series = new Series(department));
+                        chartView.Series.Add(series);
+                    }
+                    DataPoint dp = new DataPoint(expend, expend);
+                    dp.SetValueXY(month, expend);
+                    series.Points.Add(dp);
+                }
+            }
         }
         private void initPieChart()
         {
@@ -47,7 +94,7 @@ namespace Session6
             string legend1 = "Department";
             pieChartView.Series.Add(legend1);
             // グラフの種別を指定
-            pieChartView.Series[legend1].ChartType = SeriesChartType.Pie; // 円グラフを指定してみます
+            pieChartView.Series[legend1].ChartType = SeriesChartType.Pie; 
 
 
             // 部門ごとの支出をカウント
@@ -307,6 +354,17 @@ namespace Session6
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            InventoryControlForm form = new InventoryControlForm();
+            form.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 

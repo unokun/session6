@@ -29,21 +29,21 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.emSpendingView = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.mostUsedPartsView = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.costlyAssetsView = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.chartView = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.inventoryControlButton = new System.Windows.Forms.Button();
+            this.closeButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.pieChartView = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -56,7 +56,7 @@
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.costlyAssetsView)).BeginInit();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pieChartView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -119,39 +119,42 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Monthly Report of Costly Assets";
             // 
-            // chart1
+            // chartView
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(635, 339);
-            this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(310, 194);
-            this.chart1.TabIndex = 6;
-            this.chart1.Text = "chart1";
+            chartArea3.Name = "ChartArea1";
+            this.chartView.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chartView.Legends.Add(legend3);
+            this.chartView.Location = new System.Drawing.Point(635, 339);
+            this.chartView.Name = "chartView";
+            series3.ChartArea = "ChartArea1";
+            series3.CustomProperties = "PixelPointWidth=10";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.chartView.Series.Add(series3);
+            this.chartView.Size = new System.Drawing.Size(310, 194);
+            this.chartView.TabIndex = 6;
+            this.chartView.Text = "chart1";
             // 
-            // button1
+            // inventoryControlButton
             // 
-            this.button1.Location = new System.Drawing.Point(18, 512);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(131, 23);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Inventory Control";
-            this.button1.UseVisualStyleBackColor = true;
+            this.inventoryControlButton.Location = new System.Drawing.Point(18, 512);
+            this.inventoryControlButton.Name = "inventoryControlButton";
+            this.inventoryControlButton.Size = new System.Drawing.Size(131, 23);
+            this.inventoryControlButton.TabIndex = 7;
+            this.inventoryControlButton.Text = "Inventory Control";
+            this.inventoryControlButton.UseVisualStyleBackColor = true;
+            this.inventoryControlButton.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // closeButton
             // 
-            this.button2.Location = new System.Drawing.Point(170, 512);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(120, 23);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "Close";
-            this.button2.UseVisualStyleBackColor = true;
+            this.closeButton.Location = new System.Drawing.Point(170, 512);
+            this.closeButton.Name = "closeButton";
+            this.closeButton.Size = new System.Drawing.Size(120, 23);
+            this.closeButton.TabIndex = 8;
+            this.closeButton.Text = "Close";
+            this.closeButton.UseVisualStyleBackColor = true;
+            this.closeButton.Click += new System.EventHandler(this.button2_Click);
             // 
             // label1
             // 
@@ -169,19 +172,19 @@
             // 
             // pieChartView
             // 
-            chartArea2.Name = "ChartArea1";
-            this.pieChartView.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.pieChartView.Legends.Add(legend2);
+            chartArea4.Name = "ChartArea1";
+            this.pieChartView.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.pieChartView.Legends.Add(legend4);
             this.pieChartView.Location = new System.Drawing.Point(635, 30);
             this.pieChartView.Name = "pieChartView";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series2.CustomProperties = "PieLabelStyle=Disabled";
-            series2.Legend = "Legend1";
-            series2.LegendText = "#VALX";
-            series2.Name = "Series1";
-            this.pieChartView.Series.Add(series2);
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series4.CustomProperties = "PieLabelStyle=Disabled";
+            series4.Legend = "Legend1";
+            series4.LegendText = "#VALX";
+            series4.Name = "Series1";
+            this.pieChartView.Series.Add(series4);
             this.pieChartView.Size = new System.Drawing.Size(310, 243);
             this.pieChartView.TabIndex = 12;
             this.pieChartView.Text = "chart2";
@@ -216,13 +219,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(983, 551);
+            this.ClientSize = new System.Drawing.Size(1128, 551);
             this.Controls.Add(this.languageBox);
-            this.Controls.Add(this.chart1);
+            this.Controls.Add(this.chartView);
             this.Controls.Add(this.pieChartView);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.closeButton);
+            this.Controls.Add(this.inventoryControlButton);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox3);
@@ -237,7 +240,7 @@
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.costlyAssetsView)).EndInit();
             this.groupBox3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pieChartView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -252,9 +255,9 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridView costlyAssetsView;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartView;
+        private System.Windows.Forms.Button inventoryControlButton;
+        private System.Windows.Forms.Button closeButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.DataVisualization.Charting.Chart pieChartView;
