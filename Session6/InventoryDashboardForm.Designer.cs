@@ -46,7 +46,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.pieChartView = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.languageBox = new System.Windows.Forms.ComboBox();
@@ -57,7 +57,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.costlyAssetsView)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pieChartView)).BeginInit();
             this.SuspendLayout();
             // 
             // emSpendingView
@@ -167,21 +167,24 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // chart2
+            // pieChartView
             // 
             chartArea2.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea2);
+            this.pieChartView.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
-            this.chart2.Legends.Add(legend2);
-            this.chart2.Location = new System.Drawing.Point(635, 30);
-            this.chart2.Name = "chart2";
+            this.pieChartView.Legends.Add(legend2);
+            this.pieChartView.Location = new System.Drawing.Point(635, 30);
+            this.pieChartView.Name = "pieChartView";
             series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series2.CustomProperties = "PieLabelStyle=Disabled";
             series2.Legend = "Legend1";
+            series2.LegendText = "#VALX";
             series2.Name = "Series1";
-            this.chart2.Series.Add(series2);
-            this.chart2.Size = new System.Drawing.Size(310, 243);
-            this.chart2.TabIndex = 12;
-            this.chart2.Text = "chart2";
+            this.pieChartView.Series.Add(series2);
+            this.pieChartView.Size = new System.Drawing.Size(310, 243);
+            this.pieChartView.TabIndex = 12;
+            this.pieChartView.Text = "chart2";
             // 
             // groupBox4
             // 
@@ -216,7 +219,7 @@
             this.ClientSize = new System.Drawing.Size(983, 551);
             this.Controls.Add(this.languageBox);
             this.Controls.Add(this.chart1);
-            this.Controls.Add(this.chart2);
+            this.Controls.Add(this.pieChartView);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -235,7 +238,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.costlyAssetsView)).EndInit();
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pieChartView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -254,7 +257,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
+        private System.Windows.Forms.DataVisualization.Charting.Chart pieChartView;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.ComboBox languageBox;

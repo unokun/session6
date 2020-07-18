@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Windows.Forms.DataVisualization.Charting;
 using Session6.Repository;
 
 namespace Session6
@@ -32,6 +32,52 @@ namespace Session6
 
             // Costly Assets
             initCostlyAssets(inventory);
+
+            //pie chart
+            initPieChart();
+        }
+        private void initPieChart()
+        {
+            // pieChartView
+            pieChartView.Series.Clear();
+            pieChartView.ChartAreas.Clear();
+
+            pieChartView.ChartAreas.Add(new ChartArea("Area1"));
+            // ChartにSeriesを追加します
+            string legend1 = "Department";
+            pieChartView.Series.Add(legend1);
+            // グラフの種別を指定
+            pieChartView.Series[legend1].ChartType = SeriesChartType.Pie; // 円グラフを指定してみます
+
+
+            // 部門ごとの支出をカウント
+            int count = emSpendingView.RowCount;
+            double[] values = new double[count];
+            for (int i = 0; i < count; i++)
+            {
+                double value = 0.0;
+                for (int j = 1; j < emSpendingView.ColumnCount; j++)
+                {
+                    value += (int)emSpendingView.Rows[i].Cells[j].Value;
+                }
+                values[i] = value;
+
+            }
+
+            // 各項目の値を加算して合計(全体の大きさ)を算出します
+            double total = 0.0;
+            foreach (double d in values)
+            {
+                total += d;
+            }
+            // データをシリーズにセットします
+            for (int i = 0; i < values.Length; i++)
+            {
+                double rate = (values[i] / total) * 100.0;  // <-- ここで割合を算出します
+                DataPoint dp = new DataPoint(rate, rate);
+                dp.SetValueXY((string)emSpendingView.Rows[i].Cells[0].Value, rate);
+                pieChartView.Series[legend1].Points.Add(dp);
+            }
         }
         private void initCostlyAssets(Inventory inventory)
         {
