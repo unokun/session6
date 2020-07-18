@@ -29,22 +29,22 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbAssetNames = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cbWarehouseNames = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button2 = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.button3 = new System.Windows.Forms.Button();
@@ -65,13 +65,13 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Asset Name (EM number):";
             // 
-            // comboBox1
+            // cbAssetNames
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(158, 19);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(320, 20);
-            this.comboBox1.TabIndex = 1;
+            this.cbAssetNames.FormattingEnabled = true;
+            this.cbAssetNames.Location = new System.Drawing.Point(158, 19);
+            this.cbAssetNames.Name = "cbAssetNames";
+            this.cbAssetNames.Size = new System.Drawing.Size(320, 20);
+            this.cbAssetNames.TabIndex = 1;
             // 
             // label2
             // 
@@ -98,7 +98,7 @@
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.comboBox3);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.comboBox2);
+            this.groupBox1.Controls.Add(this.cbWarehouseNames);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Location = new System.Drawing.Point(15, 64);
             this.groupBox1.Name = "groupBox1";
@@ -107,39 +107,38 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search for parts:";
             // 
-            // label3
+            // button1
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(31, 32);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(62, 12);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Warehouse:";
+            this.button1.Location = new System.Drawing.Point(669, 57);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(98, 23);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Allocate";
+            this.button1.UseVisualStyleBackColor = true;
             // 
-            // comboBox2
+            // comboBox4
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(99, 28);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(300, 20);
-            this.comboBox2.TabIndex = 1;
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Location = new System.Drawing.Point(517, 59);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(140, 20);
+            this.comboBox4.TabIndex = 7;
             // 
-            // label4
+            // label6
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(33, 64);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(61, 12);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Part Name:";
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(412, 64);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(99, 12);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "Allocation Method:";
             // 
-            // comboBox3
+            // textBox1
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(100, 59);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(176, 20);
-            this.comboBox3.TabIndex = 3;
+            this.textBox1.Location = new System.Drawing.Point(344, 60);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(51, 19);
+            this.textBox1.TabIndex = 5;
             // 
             // label5
             // 
@@ -151,38 +150,40 @@
             this.label5.Text = "Amount:";
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
-            // textBox1
+            // comboBox3
             // 
-            this.textBox1.Location = new System.Drawing.Point(344, 60);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(51, 19);
-            this.textBox1.TabIndex = 5;
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(100, 59);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(176, 20);
+            this.comboBox3.TabIndex = 3;
             // 
-            // label6
+            // label4
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(412, 64);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(99, 12);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "Allocation Method:";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(33, 64);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(61, 12);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Part Name:";
             // 
-            // comboBox4
+            // cbWarehouseNames
             // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(517, 59);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(140, 20);
-            this.comboBox4.TabIndex = 7;
+            this.cbWarehouseNames.FormattingEnabled = true;
+            this.cbWarehouseNames.Location = new System.Drawing.Point(99, 28);
+            this.cbWarehouseNames.Name = "cbWarehouseNames";
+            this.cbWarehouseNames.Size = new System.Drawing.Size(300, 20);
+            this.cbWarehouseNames.TabIndex = 1;
+            this.cbWarehouseNames.SelectedIndexChanged += new System.EventHandler(this.cbWarehouseNames_SelectedIndexChanged);
             // 
-            // button1
+            // label3
             // 
-            this.button1.Location = new System.Drawing.Point(669, 57);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(98, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Allocate";
-            this.button1.UseVisualStyleBackColor = true;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(31, 32);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(62, 12);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Warehouse:";
             // 
             // groupBox2
             // 
@@ -195,15 +196,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Allocated Parts";
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 18);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 21;
-            this.dataGridView1.Size = new System.Drawing.Size(651, 102);
-            this.dataGridView1.TabIndex = 6;
-            // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(667, 97);
@@ -212,6 +204,15 @@
             this.button2.TabIndex = 7;
             this.button2.Text = "Assign to EM";
             this.button2.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(6, 18);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 21;
+            this.dataGridView1.Size = new System.Drawing.Size(651, 102);
+            this.dataGridView1.TabIndex = 6;
             // 
             // groupBox3
             // 
@@ -262,7 +263,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cbAssetNames);
             this.Controls.Add(this.label1);
             this.Name = "InventoryControlForm";
             this.Text = "InventoryControl";
@@ -280,7 +281,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbAssetNames;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -288,7 +289,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cbWarehouseNames;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox comboBox4;

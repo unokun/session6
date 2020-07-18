@@ -2,6 +2,7 @@
 using System.CodeDom.Compiler;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -18,6 +19,118 @@ namespace Session6.Repository
         const string database = "Session6";       // 接続するデータベース名
         string connectionString = string.Format("Server={0};Database={1};Uid={2};Pwd={3}", server, database, user, pass);
 
+        public DataTable GetWarehouseNames()
+        {
+            StringBuilder builder = new StringBuilder();
+            builder.AppendLine("select")
+            .AppendLine("  ID")
+            .AppendLine("  , Name")
+            .AppendLine("from")
+            .AppendLine("  warehouses")
+            .AppendLine("order by ID");
+            String sql = builder.ToString();
+
+            DataTable dt = new DataTable();
+            DataRow row;
+            String id = "ID";
+            String name = "Name";
+            dt.Columns.Add(id);
+            dt.Columns.Add(name);
+
+            row = dt.NewRow();
+            row[id] = "0";
+            row[name] = "";
+            try
+            {
+                // auto close
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                {
+                    conn.Open();
+                    using (var command = conn.CreateCommand())
+                    {
+                        command.CommandText = sql;
+                        using (var reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                while (reader.Read())
+                                {
+                                    row = dt.NewRow();
+                                    row[id] = reader.GetString(0);
+                                    row[name] = reader.GetString(1);
+                                    dt.Rows.Add(row);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine("ERROR: " + e.Message);
+            }
+            return dt;
+        }
+
+        public DataTable GetAssetNames()
+        {
+            StringBuilder builder = new StringBuilder();
+            builder.AppendLine("select")
+            .AppendLine("  EM.ID as ID")
+            .AppendLine("  , assets.AssetName as AssetName")
+            .AppendLine("from")
+            .AppendLine("  orders")
+            .AppendLine("inner join emergencymaintenances EM ")
+            .AppendLine("    on EM.ID = orders.EmergencyMaintenancesID")
+            .AppendLine("	and EM.EMStartDate is not null")
+            .AppendLine("--	and EM.EMEndDate is null")
+            .AppendLine("inner join assets")
+            .AppendLine("	on assets.ID = EM.AssetID")
+            .AppendLine("group by EM.ID")
+            .AppendLine("order by EM.ID");
+            String sql = builder.ToString();
+
+            DataTable dt = new DataTable();
+            DataRow row;
+            String id = "ID";
+            String assetName = "AssetName";
+            dt.Columns.Add(id);
+            dt.Columns.Add(assetName);
+
+            row = dt.NewRow();
+            row[id] = "0";
+            row[assetName] = "";
+            try
+            {
+                // auto close
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                {
+                    conn.Open();
+                    using (var command = conn.CreateCommand())
+                    {
+                        command.CommandText = sql;
+                        using (var reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                while (reader.Read())
+                                {
+                                    row = dt.NewRow();
+                                    row[id] = reader.GetString(0);
+                                    row[assetName] = reader.GetString(1) + "(" + reader.GetString(0) + ")";
+                                    dt.Rows.Add(row);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine("ERROR: " + e.Message);
+            }
+            return dt;
+        }
         /// <summary>
         /// 月ごとに最もコストのかかっているアセット
         /// </summary>

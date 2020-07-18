@@ -18,7 +18,8 @@ namespace Session6
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new InventoryDashboardForm());
+            //Application.Run(new InventoryDashboardForm());
+            Application.Run(new InventoryControlForm());
         }
     }
 }
